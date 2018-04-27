@@ -46,10 +46,16 @@ function walk(node)
 function deBullshit(textNode)
 {
   let price = textNode.nodeValue.match(/(?<=\$)[\d|,]+/)
+  if(price){
+    console.log("The Price Is:")
+    price = price[0].replace(/,/g,"")
+    let priceInt = parseInt(price)
+    let avoPriceInt = priceInt/2.0
+    let avoPrice = avoPriceInt.toLocaleString('en')
+    console.log(`${avoPrice} avocados`)
+    textNode.nodeValue = textNode.nodeValue
+    .replace(/(?<=\$)[\d|,]+/, avoPrice + " 🥑").replace(/\$/g,"")
+  }
+  }
 
-  console.log("The Price Is:")
-  console.log(price)
 	// Hi, I hope you like slow browsing experiences.
-  textNode.nodeValue = textNode.nodeValue
-  .replace(/(?<=\$)[\d|,]+/, price + " 🥑").replace(/\$/g,"")
-}
