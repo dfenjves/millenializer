@@ -1,0 +1,14 @@
+{
+  "manifest_version": 2,
+
+  "name": "Avocado",
+  "version": "0.1.0",
+  "description": "Lateral blog post demo extension",
+  "content_scripts": [{
+    "js": ["avo.js"],
+    "matches": ["https://www.zillow.com/*"],
+    "run_at": "document_end"
+  }]
+
+
+}
